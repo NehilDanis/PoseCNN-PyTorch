@@ -134,14 +134,14 @@ if __name__ == '__main__':
     network = torch.nn.DataParallel(network).cuda()
     cudnn.benchmark = True
 
-    # renderer
-    if cfg.TRAIN.SYNTHESIZE:
-        from ycb_renderer import YCBRenderer
-        print('loading 3D models')
-        cfg.renderer = YCBRenderer(width=cfg.TRAIN.SYN_WIDTH, height=cfg.TRAIN.SYN_HEIGHT, render_marker=False)
-        cfg.renderer.load_objects(dataset.model_mesh_paths, dataset.model_texture_paths, dataset.model_colors)
-        cfg.renderer.set_camera_default()
-        print(dataset.model_mesh_paths)
+    # # renderer
+    # if cfg.TRAIN.SYNTHESIZE:
+    #     from ycb_renderer import YCBRenderer
+    #     print('loading 3D models')
+    #     cfg.renderer = YCBRenderer(width=cfg.TRAIN.SYN_WIDTH, height=cfg.TRAIN.SYN_HEIGHT, render_marker=False)
+    #     cfg.renderer.load_objects(dataset.model_mesh_paths, dataset.model_texture_paths, dataset.model_colors)
+    #     cfg.renderer.set_camera_default()
+    #     print(dataset.model_mesh_paths)
 
     # optimizer
     assert(args.solver in ['adam', 'sgd'])
